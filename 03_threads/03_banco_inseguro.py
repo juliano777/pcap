@@ -66,7 +66,7 @@ def valida_banco(contas: typing_List[Conta], total: int) -> None:
         )
 
     else:
-        print(f'Balanço bancários consistente: (BRL) {total:.2f}', flush=True)
+        print(f'Balanço bancário consistente: (BRL) {total:.2f}', flush=True)
 
 
 def pega_duas_contas(contas: typing_List[Conta]) -> tuple:
