@@ -56,7 +56,7 @@ def transferir(origem: Conta, destino:Conta, valor: int) -> None:
     time_sleep(0.001)
     destino.saldo += valor
 
-def valida_banco(contas:typing_List[Conta], total: int) -> None:
+def valida_banco(contas: typing_List[Conta], total: int) -> None:
     atual = sum(i.saldo for i in contas)
 
     if atual != total:
