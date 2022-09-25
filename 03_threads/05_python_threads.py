@@ -3,16 +3,21 @@
 # Imports
 from datetime import datetime
 from math import sqrt
-from multiprocessing import cpu_count as multiprocessing_cpu_count
-from threading import 
+from multiprocessing import cpu_count as mp_cpu_count
+from threading import Thread as th_Thread 
 
 # Função main
 def main():
-    # 
-    qtd_cores = multiprocessing_cpu_count()
+	# Captura a quantidade de cores de CPU
+	ncpu = mp_cpu_count()
 
-    # Variável de início de execução
+	# Variável de início de execução
 	inicio = datetime.now()
+
+	# 
+	for i in range(1, ncpu +1):
+		ini = 50_000_000  
+		fim =
 
     # Chama a função computar (que é definida logo depois)
 	computar(fim=50_000_000)
