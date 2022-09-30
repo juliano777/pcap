@@ -6,6 +6,7 @@ from math import sqrt
 
 # Função main
 def main():
+	
     # Variável de início de execução
 	inicio = datetime.now()
 
@@ -20,17 +21,18 @@ def main():
 
 
 # Função computar
-def computar(fim: int, pos: int=1) -> None:
+def computar(fim: int, inicio: int=1) -> None:
+	
     # Variável fator
 	fator = 1000 * 1000
 
-    # Enquanto pos for menor que fim:
-	while pos < fim:
-		pos += 1  # Incrementa 1
-		sqrt((pos - fator) * (pos - fator))  # Raiz quadrada
+    # Enquanto inicio for menor que fim:
+	while inicio < fim:
+		inicio += 1  # Incrementa 1
+		sqrt((inicio - fator) * (inicio - fator))  # Raiz quadrada
 
 # Execução como script
 if __name__ == '__main__':
 	main()
 
-# 9.86s	
+# 10.54s

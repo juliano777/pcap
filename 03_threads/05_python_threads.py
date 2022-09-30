@@ -8,19 +8,32 @@ from threading import Thread as th_Thread
 
 # Função main
 def main():
-	# Captura a quantidade de cores de CPU
-	ncpu = mp_cpu_count()
 
 	# Variável de início de execução
 	inicio = datetime.now()
 
-	# 
-	for i in range(1, ncpu +1):
-		ini = 50_000_000  
-		fim =
+	# Captura a quantidade de cores de CPU
+	ncpu = mp_cpu_count()
 
-    # Chama a função computar (que é definida logo depois)
-	computar(fim=50_000_000)
+	print(f'Processamento matemático com {ncpu} cores.')
+
+	threads = []
+
+	# 
+	for i in range(1, ncpu + 1):
+		ini = (50_000_000 * (i - 1)) / ncpu
+		fim = (50_000_000 * i) / ncpu
+		print(f'Core [{i - 1}]: {ini} -> {fim}')
+		threads.append(
+			th_Thread(
+				target=computar,
+				kwargs={'inicio': ini, 'fim': fim},
+				daemon=True
+			)
+		)
+
+	[i.start() for i in threads]
+	[i.join() for i in threads]
 
     # Tempo decorrido da execução
 	tempo = datetime.now() - inicio
@@ -30,17 +43,19 @@ def main():
 
 
 # Função computar
-def computar(fim: int, pos: int=1) -> None:
+def computar(fim: int, inicio: int=1) -> None:
+	
     # Variável fator
 	fator = 1000 * 1000
 
-    # Enquanto pos for menor que fim:
-	while pos < fim:
-		pos += 1  # Incrementa 1
-		sqrt((pos - fator) * (pos - fator))  # Raiz quadrada
+    # Enquanto inicio for menor que fim:
+	while inicio < fim:
+		inicio += 1  # Incrementa 1
+		sqrt((inicio - fator) * (inicio - fator))  # Raiz quadrada
 
 # Execução como script
 if __name__ == '__main__':
 	main()
 
-# 9.86s	
+# 10.54s
+# 9.85s
